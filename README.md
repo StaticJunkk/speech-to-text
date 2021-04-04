@@ -6,7 +6,7 @@
 * [Dataset Used](#dataset-used)
 * [Hierarchy](#hierarchy)
 * [Preprocessing Data](#preprocessing-data)
-* [Training and Testing](#training and testing)
+* [Training and Testing](#training-and-testing)
 * [Deploying Locally Using Flask](#deploying-locally-using-flask)
 
 ## Idea Behind the Project
