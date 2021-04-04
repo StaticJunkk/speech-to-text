@@ -6,8 +6,6 @@
 * [Dataset Used](#dataset-used)
 * [Hierarchy](#hierarchy)
 * [Preprocessing Data](#preprocessing-data)
-* [Training and Testing](#training-and-testing)
-* [Deploying Locally Using Flask](#deploying-locally-using-flask)
 
 ## Idea Behind the Project
 The idea was to create a Speech-to-sign converter, which could in a way ease the conversation with people
@@ -35,13 +33,19 @@ If this is your objective, then you can simply run the server.py and client.py f
 Also, make sure to have the audio file ready. I'd suggest trimming the audio file to a length which only contains the audio and no black spaces. 
 Using the rest of the code should be easy, although you might need a little knowledge of how flask works. There's no front space for the webapp, 
 so it might not seem very colorful, but rest assured, it works anyway.
+### Understanding the flow of data
+* Firstly, we put all the data in our dataset directory. Note that it will have category labelled folders inside and then there would be audio samples in ogg format
+* Then we'll use our create dataset.ipynb file to load and transform the data using MFCCs. Data will have following fields - Labels (words), mappings (labels mapped with indexes), MFCCs(list of MFCCs transformed coefficients), files (file path). The data would be exported in json format.
+* Then we'll train the model using train.ipynb. MFCCs would become the x values and labels would be y values. get_data function would grab the data and create test, train and validation sets for us. main function would build, train, test and export the model.
+* Then, we'll use the spotting keywords.ipynb file to predict the output for certain input files. predict function would first preprocess the input data (i.e. get the MFCCs), and then will predict the index.  We'll keep a dictionary of mappings from which we'll finally return the predicted word.
+* server.ipynb would be used next. The app route would be set at '/predict' and method would have POST. predict function would take the input audio file, give it to spotting keywords and would then return the predicted output in json format using Flask's jsonify.
+* client.ipynb would fetch the data (from my github in this case, you can upload a file elsewhere and use it) and would call for response = request.post, with url set at '/predict' and files having a dictionary having path, file loaded from path, and the format. The response would be what server would return.
 
-## Preprocessing
+The last two involves very basic use of Flask for local deployment (wouldn't exactly call it deployment ;_;)
+
+## Preprocessing Data
 The audio samples were taken into frequency domain, but we didn't use the classical fourier transform. Instead, to mimic the way human ear responds to
 various frequencies, we used Mel-frequency-cepstral coefficients. You can read more about them [here](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum#:~:text=Mel-frequency%20cepstral%20coefficients%20%28%20MFCCs%29%20are%20coefficients%20that,representation%20of%20the%20audio%20clip%20%28a%20nonlinear%20%22spectrum-of-a-spectrum%22%29.)
 The data_generation file does this job for us and we saved all the coefficients in json format.
 
-## Training and Testing
-
-## Deploying Locally Using Flask
 
