@@ -5,4 +5,4 @@ sounddevice
 tensorflow-cpu
 scipy
 librosa
-
+portaudio
