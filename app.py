@@ -52,7 +52,7 @@ st.write("You can use these file for trial purpose as well [demo file](https://d
 uploaded_file = st.file_uploader("Pick an audio file", type=['ogg', 'wav', 'mp3'])
 if uploaded_file is not None:
     upb = st.audio(uploaded_file, format='audio/wav')
-    with open(os.path.join(os.getcwd(),"output.wav"),"wb") as f:
+    with open(os.path.join("/tmp/output.wav"),"wb") as f:
          f.write(uploaded_file.getbuffer())
     dp = sk.spotting_keywords()
     
