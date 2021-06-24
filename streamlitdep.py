@@ -1,14 +1,10 @@
 
 import streamlit as st
-import pandas as pd
-import numpy as np
-import time
-from sound import record, delete
+import os
+
 import spot_keywords as sk
-# import import_ipynb
-# %run Spotting_keywords.ipynb
 
-
+fs = 44100
 mappings = ["bed",
             "bird",
             "cat",
@@ -48,23 +44,16 @@ st.write("This is the deployment of a basic keyword spotter based on the [Google
 st.write("\nHere's the list of all the supported keywords")
 with st.beta_expander("Supported Keywords"):
     st.write(mappings)
-st.write("Now it works very easily... You just need to record yourself saying one of the keywords and then it's done!\nIt can be a little tricky though, so make sure you listen to the sound first. The timer is added for your benefit as it can be hard to tell when is it actually starting to record.\n ")
+st.write("Now it works very easily... You just need to record yourself saying one of the keywords, preferably for one or two second, upload the file and then it's done!\nIt can be a little tricky though, so make sure you listen to the sound first. ")
 # st.write("Make sure you record first and then predict, else it is bound to show some error")
-st.write("If you understood what I just said, then you can start by pressing the record button!")
+st.write("If you understood what I just said, then you can start by pressing the upload button!")
+st.write("You can use this file for trial purpose as well [demo file](https://github.com/StaticJunkk/speech-to-text/blob/master/up.ogg)")
 
-if st.button("record"):
-    # delete()
-    with st.empty():
-        for t in range(3):
-            time.sleep(1)
-            st.write("Recording will start in ", 2-t, "seconds")
-        with st.spinner("recording..."):
-            time.sleep(0.5)
-            record(2)
-        st.success("Done!")
-    audio = open("output.wav", "rb")
-    audio_byte = audio.read()
-    st.audio(audio_byte, format='audio/wav')
+uploaded_file = st.file_uploader("Pick an audio file", type=['ogg', 'wav', 'mp3'])
+if uploaded_file is not None:
+    upb = st.audio(uploaded_file, format='audio/wav')
+    with open(os.path.join(os.getcwd(),"output.wav"),"wb") as f:
+         f.write(uploaded_file.getbuffer())
     dp = sk.spotting_keywords()
     
     predicted_keyword = dp.predict("output.wav")
