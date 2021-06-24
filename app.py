@@ -47,7 +47,7 @@ with st.beta_expander("Supported Keywords"):
 st.write("Now it works very easily... You just need to record yourself saying one of the keywords, preferably for one or two second, upload the file and then it's done!\nIt can be a little tricky though, so make sure you listen to the sound first. ")
 # st.write("Make sure you record first and then predict, else it is bound to show some error")
 st.write("If you understood what I just said, then you can start by pressing the upload button!")
-st.write("You can use this file for trial purpose as well [demo file](https://github.com/StaticJunkk/speech-to-text/blob/master/up.ogg)")
+st.write("You can use this file for trial purpose as well [demo file](https://drive.google.com/drive/folders/1GXJHmSDOix8KHLWXDi6bFf2w6RAs_7Ji?usp=sharing)")
 
 uploaded_file = st.file_uploader("Pick an audio file", type=['ogg', 'wav', 'mp3'])
 if uploaded_file is not None:
