@@ -52,3 +52,9 @@ The data_generation file does this job for us and we saved all the coefficients 
 ## Deployment
 The model was deployed as a WebApp using streamlit. Though the functionality right now is limited to recording-first-then-uploading, future upgrades for a record-and-predict-on-spot could be added. You can find the working deployment [here](https://share.streamlit.io/staticjunkk/speech-to-text/app.py)
 
+Here's how you can use the webapp for demo.
+
+https://user-images.githubusercontent.com/49332481/123259302-f2d2e580-d511-11eb-89b9-2fb5d7f4ab34.mp4
+
+
+
