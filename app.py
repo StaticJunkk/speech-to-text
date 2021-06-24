@@ -49,7 +49,7 @@ st.write("Now it works very easily... You just need to record yourself saying on
 st.write("If you understood what I just said, then you can start by pressing the upload button!")
 st.write("You can use these file for trial purpose as well [demo file](https://drive.google.com/drive/folders/1GXJHmSDOix8KHLWXDi6bFf2w6RAs_7Ji?usp=sharing)")
 
-uploaded_file = st.file_uploader("Pick an audio file", type=['ogg', 'wav', 'mp3'])
+uploaded_file = st.file_uploader("Pick an audio file", type=['ogg', 'wav', 'mp3','amr'])
 if uploaded_file is not None:
     upb = st.audio(uploaded_file, format='audio/wav')
     file_path = "/tmp/output.wav"
