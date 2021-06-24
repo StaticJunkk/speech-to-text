@@ -52,11 +52,12 @@ st.write("You can use these file for trial purpose as well [demo file](https://d
 uploaded_file = st.file_uploader("Pick an audio file", type=['ogg', 'wav', 'mp3'])
 if uploaded_file is not None:
     upb = st.audio(uploaded_file, format='audio/wav')
-    with open(os.path.join("/tmp/output.wav"),"wb") as f:
+    file_path = "/tmp/output.wav"
+    with open(file_path,"wb") as f:
          f.write(uploaded_file.getbuffer())
     dp = sk.spotting_keywords()
     
-    predicted_keyword = dp.predict("output.wav")
+    predicted_keyword = dp.predict(file_path)
     st.balloons()
     # delete()
     st.write("The predicted keyword is: ", predicted_keyword)
