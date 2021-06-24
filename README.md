@@ -6,6 +6,7 @@
 * [Dataset Used](#dataset-used)
 * [Hierarchy](#hierarchy)
 * [Preprocessing Data](#preprocessing-data)
+* [Deployment using Streamlit](#deployment)
 
 ## Idea Behind the Project
 The idea was to create a Speech-to-sign converter, which could in a way ease the conversation with people
@@ -48,4 +49,6 @@ The audio samples were taken into frequency domain, but we didn't use the classi
 various frequencies, we used Mel-frequency-cepstral coefficients. You can read more about them [here](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum#:~:text=Mel-frequency%20cepstral%20coefficients%20%28%20MFCCs%29%20are%20coefficients%20that,representation%20of%20the%20audio%20clip%20%28a%20nonlinear%20%22spectrum-of-a-spectrum%22%29.)
 The data_generation file does this job for us and we saved all the coefficients in json format.
 
+## Deployment
+The model was deployed as a WebApp using streamlit. Though the functionality right now is limited to recording-first-then-uploading, future upgrades for a record-and-predict-on-spot could be added. You can find the working deployment [here](https://share.streamlit.io/staticjunkk/speech-to-text/app.py)
 
