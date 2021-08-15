@@ -50,7 +50,7 @@ various frequencies, we used Mel-frequency-cepstral coefficients. You can read m
 The data_generation file does this job for us and we saved all the coefficients in json format.
 
 ## Deployment
-The model was deployed as a WebApp using streamlit. Though the functionality right now is limited to recording-first-then-uploading, future upgrades for a record-and-predict-on-spot could be added. You can find the working deployment [here](https://share.streamlit.io/staticjunkk/speech-to-text/app.py)
+The model was deployed as a WebApp using streamlit. Though the functionality right now is limited to recording-first-then-uploading, future upgrades for a record-and-predict-on-spot could be added. You can find the working deployment [here](https://speech-commands-to-text.herokuapp.com/)
 
 Here's how you can use the webapp for demo.
 
